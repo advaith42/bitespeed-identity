@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: bitespeed-identity
+    env: node
+    buildCommand: npm install && npx prisma generate && npm run build
+    startCommand: npx prisma migrate deploy && npm start
+    envVars:
+      - key: DATABASE_URL
+        sync: false
+      - key: NODE_ENV
+        value: production
